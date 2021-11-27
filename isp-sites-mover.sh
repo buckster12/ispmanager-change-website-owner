@@ -475,7 +475,10 @@ isp5_gen_siteparams()
     local username=$2
 
     local domain_params="owner=$username sok=ok"
-    local values=`/usr/local/mgr5/sbin/mgrctl -m ispmgr webdomain.edit elid=$domain | grep -vE '^owner|^id|^elid' | xargs | sed -re "s/ ipaddrs=/,/2g"`
+    local values=`/usr/local/mgr5/sbin/mgrctl -m ispmgr webdomain.edit elid=$domain | grep -vE '^owner|^id|^elid|^secure|^ssl_cert|^ssl_port' | xargs | sed -re "s/ ipaddrs=/,/2g"`
+    #local values=`/usr/local/mgr5/sbin/mgrctl -m ispmgr webdomain.edit elid=$domain | grep -vE '^owner|^id|^elid' | xargs | sed -re "s/ ipaddrs=/,/2g"`
+    # removed secure, ssl_cert, ssl_port parameters, because owner of cert if wrong.
+    # ToDo
 
     domain_params="$domain_params $values"
 
