@@ -523,6 +523,7 @@ create_user()
     local user_params=$USER_PARAMS
     local func_name=${FUNCNAME[0]}
 
+    echo "Running command: $create_user_command "
     local answer=`eval $create_user_command`
     check_result $func_name ${answer[@]}
     local result=$?
