@@ -505,7 +505,8 @@ isp5_gen_userparams()
     local old_username=$1
     local username=$2
     local password=`pwgen -scan 16 1`
-    local user_params="name=$username ftp_user_name=$username passwd=$password webdomain=off emaildomain=off sok=ok"
+    local user_params="name=$username ftp_user_name=off passwd=$password webdomain=off emaildomain=off sok=ok"
+    #local user_params="name=$username ftp_user_name=$username passwd=$password webdomain=off emaildomain=off sok=ok"
 
     local values=`/usr/local/mgr5/sbin/mgrctl -m ispmgr user.edit elid=$old_username | grep -vE '^name|^.?id=|^create_time|^home|^ftp_user_name|^elid|^limit_webdomains|^limit_emaildomains' | sed -re "s/([^=]+=)(.*)$/\1\\\'\2\\\'/" | xargs`
 
