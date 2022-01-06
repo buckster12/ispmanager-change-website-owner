@@ -512,6 +512,7 @@ isp5_gen_userparams()
     user_params="$user_params $values"
 
     USER_PARAMS=$user_params
+    echo "Generated user_params=$user_params"
 }
 
 
